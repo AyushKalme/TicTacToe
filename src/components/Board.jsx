@@ -1,32 +1,10 @@
-import React , { useState } from 'react'
+import React from 'react'
 import Square from "./Square";
 
 
 
-const Board = () => {
+const Board = ({board , handleSquareclick}) => {
 
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [isNextX , setisNextX] = useState(false);
-
-  const handleSquareclick = (position) => {
-
-    // function below avoids repeatation of moves on same squares which already have O or X 
-    if(board[position]){
-      return;
-    }
-    
-    setBoard( prev => {
-      return prev.map((square, pos) => {
-        if(pos === position){
-          return isNextX ? 'X' : 'O';
-        }
-
-        return square;
-      });
-    });
-
-    setisNextX(prev => !prev)
-  };
   //renders all squares and their valus
   const renderSquare = (position) => {
     return (
