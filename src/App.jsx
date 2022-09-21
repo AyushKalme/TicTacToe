@@ -8,16 +8,18 @@ import "./styles/root.scss"
 
 const App = () =>{
 
-  const [history , setHistory] = useState([{board : Array(9).fill(null) , isNextX : true},]);
+  const New_Game = [{board : Array(9).fill(null) , isNextX : true},]
+  
+  const [history , setHistory] = useState(New_Game);
   
   const [currentMove , setcurrentMove] = useState(0);
 
   const current = history[currentMove];
 
 
-  const winner = calculateWinner(current.board);
+  const {winner , winningsquares} = calculateWinner(current.board);
 
-  const message = winner ? `winner is ${winner}` : `${current.isNextX ? 'X' : 'O'} 's Turn`;
+  // const message = winner ? `winner is ${winner}` : `${current.isNextX ? 'X' : 'O'} 's Turn`;
 
   const handleSquareclick = (position) => {
 
@@ -49,11 +51,17 @@ const App = () =>{
     setcurrentMove(move)
   }
 
+  const new_game = () =>{
+    setHistory(New_Game);
+    setcurrentMove(0);
+
+  }
   return(
     <div className="app">
       <h1>TIC TAC TOE</h1>
       <Statusmesasge winner ={winner} current = {current} />
-      <Board board = {current.board} handleSquareclick = {handleSquareclick} />
+      <Board board = {current.board} handleSquareclick = {handleSquareclick} winningsquares = {winningsquares} />
+      <button onClick={new_game}>Start New Game</button>
       <History history = {history} moveTo = {moveTo} currentMove ={currentMove} />
     </div>
 
