@@ -1,5 +1,7 @@
 # Nano React App Default Javascript Template
 
+published at tiictaactooe.surge.sh
+
 The default template project for [nano-react-app](https://github.com/nano-react-app/nano-react-app).
 
 - `npm start` — This will spawn a development server with a default port of `5173`.
